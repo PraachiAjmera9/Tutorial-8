@@ -13,7 +13,6 @@ library(ggplot2)
 Data_tutorial <- read_csv("Data_Tables_Criminal_Incidents_Visualisation_Year_Ending_December_2019.csv")
 ```
 
-\
 
 ```{r}
 str(Data_tutorial)
@@ -34,22 +33,51 @@ library(readr)
 library(ggplot2) 
 
 
-
-str(Data_tutorial)
-
-
-summary(Data_tutorial)
-
-
-head(Data_tutorial) 
-tail(Data_tutorial) 
-
-
 ggplot(Data_tutorial, aes(x = `Incidents Recorded` , y = `Rate per 100,000 population`)) +
   geom_bar(stat = "identity") +
   labs(x = "Incidents Recorded",
        y = "Rate Per 100,000 population", 
-       title = "Scatter Plot of Data_Tables_Criminal_Incidents",)
+       title = "Scatter Plot of Data_Tables_Criminal_Incidents")
+
+```
 
 
+```{r, message=FALSE, warning=FALSE, echo=FALSE, eval=TRUE}
+#| label: fig-incidents
+#| fig-cap: "Incidents Recorded vs Rate per 100,000 population"
+
+ggplot(Data_tutorial, aes(x = `Incidents Recorded`, y = `Rate per 100,000 population`, color = `Incidents Recorded`)) +
+  geom_point(size = 1.5) +
+  geom_smooth(method = "lm", se = FALSE, color = "black") +  # Adding linear regression line
+  theme_minimal() +
+  theme(legend.position = "right")
+
+```
+
+## Explanation 
+
+The plot @fig-incidents shows the relationship between Incidents Recorded and Rate per 100,000 population.
+
+
+```{r}
+
+Data_tutorial <- data.frame(
+  Year = c(2010, 2011, 2012, 2013, 2014),
+  Rate_per_100000 = c(5.8, 6.1, 5.9, 6.2, 6.5)
+)
+
+
+ggplot(Data_tutorial, aes(x = Year, y = Rate_per_100000)) +
+  geom_bar(stat = "identity")
+
+```
+
+
+```{r}
+ ggplot(Data_tutorial, aes(x = `Offence Division`, y = `Incidents Recorded`)) +
+   geom_boxplot() +
+   theme(axis.text.x = element_text(angle = 10, hjust = 1)) +
+   labs(title = "Boxplot of Total Number of Offenses by Category", 
+        x = "Offence Division", 
+        y = "Incidents Recorded")
 ```
