@@ -28,3 +28,13 @@ ggplot(Data_tutorial, aes(x = Year, y = Rate_per_100000)) +
   geom_bar(stat = "identity")
 
 ```
+
+```{r}
+ ggplot(Data_tutorial, aes(x = `Offence Division`, y = `Incidents Recorded`)) +
+   geom_boxplot() +
+   theme(axis.text.x = element_text(angle = 10, hjust = 1)) +
+   labs(title = "Boxplot of Total Number of Offenses by Category", 
+        x = "Offence Division", 
+        y = "Incidents Recorded")
+```
+
