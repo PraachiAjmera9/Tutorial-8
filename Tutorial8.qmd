@@ -6,10 +6,20 @@ editor: visual
 
 ```{r}
 library(readr)
+library(dplyr)
+library(tidyverse)
 ```
-
 
 ```{r}
 Data_tutorial <- read_csv("Data_Tables_Criminal_Incidents_Visualisation_Year_Ending_December_2019.csv")
+```
+
+```{r}
+ggplot(Data_tutorial, aes(x = `Offence Division`, y = `Incidents Recorded`)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 10, hjust = 1)) +
+  labs(title = "Boxplot of Total Number of Offenses by Category", 
+       x = "Offence Division", 
+       y = "Incidents Recorded")
 ```
 
