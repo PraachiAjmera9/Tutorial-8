@@ -6,10 +6,50 @@ editor: visual
 
 ```{r}
 library(readr)
+library(ggplot2)
 ```
-
 
 ```{r}
 Data_tutorial <- read_csv("Data_Tables_Criminal_Incidents_Visualisation_Year_Ending_December_2019.csv")
 ```
 
+\
+
+```{r}
+str(Data_tutorial)
+
+summary(Data_tutorial)
+
+
+head(Data_tutorial)
+tail(Data_tutorial) 
+
+
+
+```
+
+```{r Analysis}
+
+library(readr) 
+library(ggplot2) 
+
+
+
+str(Data_tutorial)
+
+
+summary(Data_tutorial)
+
+
+head(Data_tutorial) 
+tail(Data_tutorial) 
+
+
+ggplot(Data_tutorial, aes(x = `Incidents Recorded` , y = `Rate per 100,000 population`)) +
+  geom_bar(stat = "identity") +
+  labs(x = "Incidents Recorded",
+       y = "Rate Per 100,000 population", 
+       title = "Scatter Plot of Data_Tables_Criminal_Incidents",)
+
+
+```
